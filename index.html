@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroShop - Toko Elektronik Digital</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>ElectroShop</h1>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Cari Laptop, Smartphone...">
+                <button onclick="searchProducts()">Cari</button>
+            </div>
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cartCount">0</span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="categories container">
+        <button onclick="filterCategory('all')">Semua</button>
+        <button onclick="filterCategory('Laptop')">Laptop</button>
+        <button onclick="filterCategory('Smartphone')">Smartphone</button>
+        <button onclick="filterCategory('Aksesoris')">Aksesoris</button>
+    </nav>
+
+    <main class="container">
+        <div id="product-grid" class="product-grid">
+            </div>
+    </main>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('productModal')">&times;</span>
+            <div class="modal-body">
+                <img id="modalImg" src="" alt="Produk">
+                <div class="modal-info">
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalPrice" class="price"></p>
+                    <div class="specs">
+                        <h3>Spesifikasi Teknis:</h3>
+                        <ul id="modalSpecs"></ul>
+                    </div>
+                    <button id="addToCartBtn" class="btn-primary">Tambah ke Keranjang</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cartModal" class="modal">
+        <div class="modal-content cart-content">
+            <span class="close" onclick="closeModal('cartModal')">&times;</span>
+            <h2>Keranjang Belanja</h2>
+            <div id="cartItems">
+                <p>Keranjang kosong.</p>
+            </div>
+            <div class="cart-summary">
+                <h3>Total: <span id="cartTotal">Rp 0</span></h3>
+            </div>
+            
+            <div class="checkout-form">
+                <h3>Pengiriman</h3>
+                <input type="text" placeholder="Nama Lengkap" id="buyerName">
+                <textarea placeholder="Alamat Pengiriman" id="buyerAddress"></textarea>
+                <select id="paymentMethod">
+                    <option value="transfer">Transfer Bank (Simulasi)</option>
+                    <option value="cod">COD (Simulasi)</option>
+                </select>
+                <button onclick="processCheckout()" class="btn-checkout">Checkout Sekarang</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
